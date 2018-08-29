@@ -1,0 +1,194 @@
+<div>
+    <button id="myBtn">Open Modal</button>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p style="height: 65px; font-size: 20px; line-height: 10px; color: white;text-align: center;padding-top: 5px"> Record Setup</p>
+
+                <div id = 'macDeviceList' style="display: block">
+                    <label style="color: white">Select Device:</label>
+                    <select class="form-control" id="mac_device_list" style="width: auto;height: 30px; display: inline ">
+                        <option ng-repeat="device in userDevices" value= {{device.path}}>{{device.name}}</option>
+                    </select>
+                    <!--<button class="btn btn-primary btn-sm" ng-click="connectSerial()">Connect</button>-->
+                </div>
+                <div id = 'winDeviceList' style="display: none">
+                    <label style="color: white">COM Port:</label>
+                    <select class="form-control" id="path_list" style="width: auto; display: inline-block">
+                        <option ng-repeat="device in userDevices" value= {{device.path}}>{{device.path}}</option>
+                    </select>
+                    <label style="color: white">Device:</label>
+                    <select class="form-control" id="win_device_list" style="width: auto; display: inline-block">
+                        <option ng-repeat="device in userListedDevices" value= {{device.deviceId}}>{{device.serialNo}}</option>
+                    </select>
+                    <!--<button class="btn btn-primary btn-sm" ng-click/="connectSerial()">Connect</button>-->
+                </div>
+                <br>
+                <div class="row">
+                    <div id='eegFile' class="col col-sm-12">
+                        <button id="chooseEEGFile" ng-click="chooseEEGFile()" class="btn btn-primary btn-sm" style="display: inline"><i class="fa fa-file"></i> Choose EEG File &nbsp; </button>
+                        <input type="text" id="eegFilePath" readonly style="width: 60%; display: inline-block">
+                    </div>
+                    <br>
+                    <div id='vidoFile'  class="col col-sm-12" style="padding-top: 3px; display: inline">
+                        <button id="chooseVideoFile" ng-click="chooseVideoFile()" class="btn btn-primary btn-sm" style="display: inline"><i class="fa fa-file"></i> Choose Video File</button>
+                        <input type="text" id="videoFilePath" readonly style="width: 60%; display: inline-block">
+                    </div>
+                    <!--- video box cut out -->
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label style="color: white">Enable Video</label>
+                        <input id="toggle-two" type="checkbox" data-toggle="toggle" data-width="50" data-height="25">
+                    </div>
+                    <br>
+                    <br>
+                    <div class="col-sm-12">
+                        <label style="color: white">Enable Streaming</label>
+                        <input id="toggle-one" type="checkbox" data-toggle="toggle" data-width="50" data-height="25">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-12" style="text-align: center" id="advSettings">
+                        <p id="advText" style="font-size: 10px;color: white;margin-bottom: 2px"> Show Additional Options</p>
+                        <hr style="color: gray;margin-top: 0px; margin-bottom: 0px">
+                        <p id = 'advAngle' style="font-size: 10px;color: white; margin-top: 2px">▽</p>
+                    </div>
+                    <div class="col-sm-12" style="display: none">
+                        <div class="col-sm-12">
+                            <label style="color: white">Activity Monitor</label>
+                            <input id="toggle-five" type="checkbox" data-toggle="toggle" data-width="52" data-height="27">
+                        </div>
+                        <br>
+                        <br>
+                        <div class="col-sm-12">
+                            <label style="color: white">Auto-Upload to Cloud</label>
+                            <input id="toggle-three" type="checkbox" data-toggle="toggle" data-width="52" data-height="27">
+                        </div>
+                        <br>
+                        <br>
+                        <div class="col-sm-12">
+                            <label style="color: white">Store to Session Group: </label>
+                            <select class="form-control" style="width: auto; display: inline-block">
+                                <option> Custom Group #1</option>
+                                <option> Custom Group #2</option>
+                                <option> Custom Group #3</option>
+                            </select>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col col-sm-12" style="text-align: center; padding-top: 10px">
+                        <button id='startRecordBtn' data-ng-click="startRecord()" type="button" class="btn btn-primary btn-lg"><i class="fa fa-circle"></i> Record</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+    </div>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="recordSidebar-wrapper" role="navigation">
+        <div class="row">
+            <div style="position: absolute; text-align: left; padding-left: 20px; padding-top: 15px">
+                <!--<button class="btn btn-primary btn-md"> <i class="fa fa-arrow-left"></i> <u>Back</u></button>-->
+                <a ui-sref="vemu.home({type:'patient'})" style="color: white; font-size: 15px"><u><i class="fa fa-arrow-left"></i> Back</u></a>
+            </div>
+            <p style="height: 65px; font-size: 20px; line-height: 44px; color: white;text-align: center;padding-top: 5px"> Record Setup</p>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12" style="padding-left: 5%;padding-right: 5%">
+                <div id = 'macDeviceList' style="display: block">
+                    <label style="color: white">Select Device:</label>
+                    <select class="form-control" id="mac_device_list" style="width: auto;height: 30px; display: inline ">
+                        <option ng-repeat="device in userDevices" value= {{device.path}}>{{device.name}}</option>
+                    </select>
+                    <!--<button class="btn btn-primary btn-sm" ng-click="connectSerial()">Connect</button>-->
+                </div>
+                <div id = 'winDeviceList' style="display: none">
+                    <label style="color: white">COM Port:</label>
+                    <select class="form-control" id="path_list" style="width: auto; display: inline-block">
+                        <option ng-repeat="device in userDevices" value= {{device.path}}>{{device.path}}</option>
+                    </select>
+                    <label style="color: white">Device:</label>
+                    <select class="form-control" id="win_device_list" style="width: auto; display: inline-block">
+                        <option ng-repeat="device in userListedDevices" value= {{device.deviceId}}>{{device.serialNo}}</option>
+                    </select>
+                    <!--<button class="btn btn-primary btn-sm" ng-click/="connectSerial()">Connect</button>-->
+                </div>
+                <br>
+                <div class="row">
+                    <div id='eegFile' class="col col-sm-12">
+                        <button id="chooseEEGFile" ng-click="chooseEEGFile()" class="btn btn-primary btn-sm" style="display: inline"><i class="fa fa-file"></i> Choose EEG File &nbsp; </button>
+                        <input type="text" id="eegFilePath" readonly style="width: 60%; display: inline-block">
+                    </div>
+                    <br>
+                    <div id='vidoFile'  class="col col-sm-12" style="padding-top: 3px; display: inline">
+                        <button id="chooseVideoFile" ng-click="chooseVideoFile()" class="btn btn-primary btn-sm" style="display: inline"><i class="fa fa-file"></i> Choose Video File</button>
+                        <input type="text" id="videoFilePath" readonly style="width: 60%; display: inline-block">
+                    </div>
+                    <!--- video box cut out -->
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label style="color: white">Enable Video</label>
+                        <input id="toggle-two" type="checkbox" data-toggle="toggle" data-width="50" data-height="25">
+                    </div>
+                    <br>
+                    <br>
+                    <div class="col-sm-12">
+                        <label style="color: white">Enable Streaming</label>
+                        <input id="toggle-one" type="checkbox" data-toggle="toggle" data-width="50" data-height="25">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-12" style="text-align: center" id="advSettings">
+                        <p id="advText" style="font-size: 10px;color: white;margin-bottom: 2px"> Show Additional Options</p>
+                        <hr style="color: gray;margin-top: 0px; margin-bottom: 0px">
+                        <p id = 'advAngle' style="font-size: 10px;color: white; margin-top: 2px">▽</p>
+                    </div>
+                    <div class="col-sm-12" style="display: none">
+                        <div class="col-sm-12">
+                            <label style="color: white">Activity Monitor</label>
+                            <input id="toggle-five" type="checkbox" data-toggle="toggle" data-width="52" data-height="27">
+                        </div>
+                        <br>
+                        <br>
+                        <div class="col-sm-12">
+                            <label style="color: white">Auto-Upload to Cloud</label>
+                            <input id="toggle-three" type="checkbox" data-toggle="toggle" data-width="52" data-height="27">
+                        </div>
+                        <br>
+                        <br>
+                        <div class="col-sm-12">
+                            <label style="color: white">Store to Session Group: </label>
+                            <select class="form-control" style="width: auto; display: inline-block">
+                                <option> Custom Group #1</option>
+                                <option> Custom Group #2</option>
+                                <option> Custom Group #3</option>
+                            </select>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col col-sm-12" style="text-align: center; padding-top: 10px">
+                        <button id='startRecordBtn' data-ng-click="startRecord()" type="button" class="btn btn-primary btn-lg"><i class="fa fa-circle"></i> Record</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>

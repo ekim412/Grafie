@@ -1,0 +1,117 @@
+<!--<nav class="navbar navbar-inverse" role="navigation" style="margin-bottom: 0px">-->
+    <!--<div class="navbar-header">-->
+        <!--<img class="navbar-brand" src="/resources/images/logo.png" style="height: 50px;width: auto">-->
+        <!--&lt;!&ndash;<a class="navbar-brand">Avertus</a>&ndash;&gt;-->
+
+        <!--&lt;!&ndash;<a class="navbar-brand" ><img src="/resources/images/logo.png" alt="Avertus">&ndash;&gt;-->
+        <!--&lt;!&ndash;</a>&ndash;&gt;-->
+    <!--</div>-->
+    <!--<ul class="nav navbar-nav">-->
+        <!--<li><a ui-sref="vemu.home({type:'patient'})">Home</a></li>-->
+        <!--<li><a ui-sref="vemu.record">Record</a></li>-->
+        <!--&lt;!&ndash;<li><a ui-sref="vemu.patient">Patients</a></li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<li><a ui-sref="vemu.graph">Graph</a></li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<li><a ui-sref="vemu.session">Sessions</a></li>&ndash;&gt;-->
+    <!--</ul>-->
+    <!--<ul class="nav navbar-nav navbar-right" style="padding-right: 10px">-->
+        <!--<li class="dropdown">-->
+            <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle"></i> Evan Shang <span class="caret"></span></a>-->
+            <!--<ul class="dropdown-menu">-->
+                <!--<li><a href="#">Manage Profile</a></li>-->
+                <!--<li><a href="#">Logout</a></li>-->
+                <!--<li role="separator" class="divider"></li>-->
+                <!--<li><a href="#">Settings</a></li>-->
+                <!--<li><a href="#">Offline Mode</a></li>-->
+            <!--</ul>-->
+        <!--</li>-->
+    <!--</ul>-->
+<!--</nav>-->
+
+<div class="navbar navbar-inverse navbar-fixed-top trans-before" role="navigation">
+    <div id="preLoginMenu" class="container" style="margin-right: 40px">
+        <div class="navbar-header">
+            <a ui-sref="grafie.home({type:'general'})" class="navbar-brand">Grafie</a>
+        </div>
+
+        <ul class="nav navbar-nav navbar-right" >
+            <li><a ui-sref="grafie.browse({type:'photos'})">Browse</a></li>
+            <li><a ui-sref="grafie.browse({type:'graphers'})">Graphers</a></li>
+            <li><a ui-sref="grafie.home({type:'login'})">Log In</a></li>
+            <li><a ui-sref="grafie.auth({type:'signup'})">Sign Up</a></li>
+        </ul>
+    </div>
+
+    <div id="postLogin" class="container" style="margin-right: 40px; display: none">
+        <div class="navbar-header">
+            <a ui-sref="grafie.home({type:'loginHome'})" class="navbar-brand">Grafie</a>
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li><a ui-sref="grafie.browse({type:'photos'})">Browse</a></li>
+            <li><a ui-sref="grafie.browse({type:'graphers'})">Graphers</a></li>
+            <li><a>Listings</a></li>
+            <li><a></a></li>
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle"></i> Evan Shang <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a ui-sref="grafie.profile({type:'self'})">My Profile</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+
+    <div id="galleryModel" style="width: 100%;height: 100%;position: fixed;z-index: 1;text-align: center;background-color: rgba(0,0,0,0.9); display: none" >
+        <a><span class="close">&times;</span></a>
+        <div id = "photoPopup" class="col-sm-8 col-sm-offset-2" style="z-index: 100; position:relative;">
+            <!--<img id = "photoPopup" src="">-->
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-sm-offset-2" style="background-color: rgba(255,255,255,0.9); padding-left: 0px; padding-right: 0px">
+                <img src="resources/images/grafieLogo.png" style="width: 100px; height: 100px;">
+            </div>
+            <div class="col-sm-6" style="background-color: rgba(255,255,255,0.9); height: 100px; padding-left: 0px; padding-right: 0px">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="row">
+                            <div class="col-sm-4" style="text-align: left; padding-left: 0px; padding-right: 0px">
+                                <p style="font-size: medium">Name: Derek Jedral</p>
+                            </div>
+
+                            <div class="col-sm-4" style="text-align: left; padding-left: 0px; padding-right: 0px">
+                                <p style="font-size: medium">Photo: photo_name</p>
+                            </div>
+
+                            <div class="col-sm-4" style="padding-left: 0px; padding-right: 0px; text-align: left">
+                                <p>Rating: <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: -20px">
+                            <div class="col-sm-12" style="text-align: left; padding-left: 0px; padding-right: 0px">
+                                "picture caption defined by the uploader, picture caption defined by the uploader"
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <br>
+                        <button class="button btn-primary btn-md">View Profile</button>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div><!--.navbar-default-->
+
+<div data-smart-router-animation-wrap="content content@grafie" data-wrap-for="#content">
+    <div id ="grafieContent" data-ui-view="content" data-autoscroll="false"></div>
+</div>
